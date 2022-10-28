@@ -10,7 +10,7 @@ router.use('/camiones',camionRouter)
 router.use('/camioneros',camioneroRouter)
 router.use('/paquetes',paqueteRouter)
 router.use('/provincias',provinciaRouter)
-router.use('/camionxcamioneros',camionXcamioneroRouter)
+//router.use('/camionxcamioneros',camionXcamioneroRouter)
 
 
 module.exports=router;

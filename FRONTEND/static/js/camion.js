@@ -26,7 +26,7 @@ function listarCamiones(){
     });
 }
 function crearCamiones(){
-const url= 'http://localhost:3000/camiones'
+const url= 'http://localhost:3000/camiones/create'
 
 const nombre = document.getElementById("matricula")
 const dni = document.getElementById("modelo")
