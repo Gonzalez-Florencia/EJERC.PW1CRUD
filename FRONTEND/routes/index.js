@@ -26,10 +26,14 @@ const provinciaRouter=require('./provincias.routes')
 const camionesRouter=require('./camiones.routes')
 
 
+router.get('/',(req,res)=>{
+  res.sendFile(path.resolve('./views/index.html'));
+})
 
-
-
-
+router.use('/camions',camionesRouter)
+//router.use('/camioners',camionerosRouter)
+//router.use('/paquets',paqueteRouter)
+//router.use('/prov',provinciaRouter)
 
 
 module.exports = router;
