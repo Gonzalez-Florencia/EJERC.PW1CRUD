@@ -1,5 +1,5 @@
-//const router = require('express').Router();
-//const path = require('path');
+const router = require('express').Router();
+const path = require('path');
 
 //router.get('/', (req, res) => {
   //  res.sendFile(path.resolve('./views/index.html'));
@@ -20,18 +20,16 @@
  //   res.sendFile(path.resolve('./views/camionxcamioneros.html'));
 //)
 
-//module.exports = router;
-const express =require('express');
-const app = express();
-const port = 8000;
-const router = require("./routes");
-app.use(express.json());
-app.use(express.urlencoded({ extended: true} ));
-app.use('/css', express.static(`${_dirname}/static/css`));
-app.use('/js', express.static(`${_dirname}/static/js`));
-app.use('/img', express.static(`${_dirname}/static/img`));
+const camionerosRouter= require('./camioneros.routes')
+const paqueteRouter= require('./paquetes.routes')
+const provinciaRouter=require('./provincias.routes')
+const camionesRouter=require('./camiones.routes')
 
-app.use("/",router)
-app.listen(port,()=>{
-    console.log(`Frontend ${port}`)
-})
+
+
+
+
+
+
+
+module.exports = router;
