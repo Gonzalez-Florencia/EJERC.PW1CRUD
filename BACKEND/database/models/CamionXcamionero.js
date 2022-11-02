@@ -1,14 +1,20 @@
-//const { Model } = require('sequelize')
-//const sequelize = require('../sequelize')
+const { Model, DataTypes } = require('sequelize')
+const sequelize = require('../sequelize')
 
-//class CamionXcamionero extends Model {}
+class Camionxcamionero extends Model {}
 
-//CamionXcamionero.init({}, {
-    //sequelize,
-    //modelName: 'camionxcamionero',
-    //tableName: 'camionesxcamioneros'
-//})
+Camionxcamionero.init({
+    id: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+        primaryKey: true
+    },
+    fecha: DataTypes.DATE
+}, {
+    sequelize,
+    modelName: 'camionxcamionero',
+    tableName: 'camionxcamioneros'
+})
 
-//module.exports = CamionXcamionero
-
-
+module.exports = Camionxcamionero

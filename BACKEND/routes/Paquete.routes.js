@@ -1,13 +1,25 @@
 const router = require('express').Router()
-const {Camion,Camionero,Paquete}=require('../database/models')
+const {Camion,Camionero,Paquete,Provincia}=require('../database/models')
+
+router.get("/:codigoPaquete", (req, res) => {
+    Paquete.findOne({
+        where: {
+            codigoPaquete: req.params.codigoPaquete
+        }
+    }).then(data => {
+        res.json(data)
+    }).catch(error => {
+        res.json(error)
+    })
+})
 
 
 router.get("/",(req, res)=>{
     Paquete.findAll({
-        attributes:['codigo','descripcion','destinatario','direccionDestinatario',],
+        attributes:['codigoPaquete','descripcion','destinatario','direccionDestinatario',],
         include:{
-            model:Paquete,
-            attributes:['id','codigo'],
+            model:Provincia,
+            attributes:['codigoProvincia','nombre'],
         }
     }).then(list=>{
         res.json(list)
@@ -16,12 +28,13 @@ router.get("/",(req, res)=>{
 
 router.post("/create",(req,res)=>{
     Paquete.create({
-        codigo: req.body.codigo,
+        codigoPaquete: req.body.codigoPaquete,
         descripcion:req.body.descripcion,
         destinatario:req.body.destinatario,
         direccionDestinatario: req.body.direccionDestinatario,
-    }).then(Paquete=>{
-        res.json(camion)
+        codigoProvincia: req.body.codigoProvincia
+    }).then(paquete=>{
+        res.json(paquete)
     }).catch(error=>{
         res.json(error)
     })
@@ -29,17 +42,18 @@ router.post("/create",(req,res)=>{
 
 
 
-router.put('/update/:id',(req,res)=>{
+router.put('/update/:codigoPaquete',(req,res)=>{
     Paquete.update({
-        codigo: req.body.codigo,
+        codigoPaquete: req.body.codigoPaquete,
         descripcion:req.body.descripcion,
         destinatario:req.body.destinatario,
         direccionDestinatario: req.body.direccionDestinatario,
+        codigoProvincia: req.body.codigoProvincia
 
     },
     {
         where:{
-            id:req.params.id
+            codigoPaquete:req.params.codigoPaquete
         }
     }).then( data=>{
         res.json(data)
@@ -48,10 +62,10 @@ router.put('/update/:id',(req,res)=>{
 })
 })
 
-router.delete('/delete/:id',(req,res)=>{
+router.delete('/delete/:codigoPaquete',(req,res)=>{
     Paquete.destroy({
         where:{
-            id:req.params.id
+            codigoPaquete:req.params.codigoPaquete
         }
     }).then( data=>{
         res.json(data)

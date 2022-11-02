@@ -1,6 +1,11 @@
 const router = require('express').Router()
 const {Camion,Camionero}=require('../database/models')
 
+router.get("/:matricula", (req, res) => {
+    Camion.findByPk(req.params.matricula).then(obj => {
+        res.json(obj)
+    })
+})
 
 router.get("/",(req, res)=>{
     Camion.findAll({
@@ -29,9 +34,8 @@ router.post("/create",(req,res)=>{
 
 
 
-router.put('/update/:id',(req,res)=>{
+router.put('/update/:matricula',(req,res)=>{
     Camion.update({
-        matricula: req.body.matricula,
         modelo:req.body.modelo,
         tipo:req.body.tipo,
         potencia : req.body.potencia,
@@ -39,7 +43,7 @@ router.put('/update/:id',(req,res)=>{
     },
     {
         where:{
-            id:req.params.id
+            matricula:req.params.matricula
         }
     }).then( data=>{
         res.json(data)
@@ -51,7 +55,7 @@ router.put('/update/:id',(req,res)=>{
 router.delete('/delete/:id',(req,res)=>{
     Camion.destroy({
         where:{
-            id:req.params.id
+            matricula:req.params.matricula
         }
     }).then( data=>{
         res.json(data)

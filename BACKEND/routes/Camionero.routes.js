@@ -1,13 +1,24 @@
 const router = require('express').Router()
-const {Camion,Camionero}=require('../database/models')
+const {Camion,Camionero,Paquete}=require('../database/models')
+const Camionxcamionero = require('../database/models/CamionXcamionero')
 
+
+router.get("/:dni", (req, res) => {
+    Camionero.findByPk(req.params.dni).then(obj => {
+        res.json(obj)
+    })
+})
 
 router.get("/",(req, res)=>{
     Camionero.findAll({
         attributes:['dni','nombre','telefono','direccion','salario','poblacion'],
         include:{
             model:Camion,
-            attributes:['id','dni'],
+            attributes: ['matricula'],
+            model: Camionxcamionero,
+            attributes: ['matricula'],
+            model: Paquete,
+            attributes: ['camioneroDNI'],
         }
     }).then(list=>{
         res.json(list)
@@ -31,7 +42,7 @@ router.post("/create",(req,res)=>{
 
 
 
-router.put('/update/:id',(req,res)=>{
+router.put('/update/:dni',(req,res)=>{
     Camionero.update({
         dni: req.body.dni,
         nombre:req.body.nombre,
@@ -42,7 +53,7 @@ router.put('/update/:id',(req,res)=>{
     },
     {
         where:{
-            id:req.params.id
+            dni:req.params.dni
         }
     }).then( data=>{
         res.json(data)
@@ -51,10 +62,10 @@ router.put('/update/:id',(req,res)=>{
 })
 })
 
-router.delete('/delete/:id',(req,res)=>{
+router.delete('/delete/:dni',(req,res)=>{
     Camionero.destroy({
         where:{
-            id:req.params.id
+            dni:req.params.dni
         }
     }).then( data=>{
         res.json(data)
