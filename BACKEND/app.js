@@ -1,7 +1,7 @@
 
 const express = require('express')
 const cors = require('cors')
-const { Camion,Paquete,Camionero,Provincia,CamionXcamionero}=require('./database/models')
+const { Camion,Paquete,Camionero,Provincia}=require('./database/models')
 const app = express()
 const sequelize=require ('./database/sequelize')
 const router =require('./routes')

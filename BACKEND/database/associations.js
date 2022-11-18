@@ -1,2 +1,2 @@
-const{Camion,Camionero,CamionXcamionero,Paquete,Provincia}=require('./models')                                         
+const{Camion,Camionero,Paquete,Provincia}=require('./models')                                         
 

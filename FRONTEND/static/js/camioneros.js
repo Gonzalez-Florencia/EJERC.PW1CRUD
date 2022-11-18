@@ -27,7 +27,7 @@ function getCamionero() {
         document.getElementById("direccion").value = object.direccion
         document.getElementById("telefono").value = object.telefono
         document.getElementById("salario").value = object.salario
-        document.getElementById("residencia").value = object.residencia
+        document.getElementById("poblacion").value = object.poblacion
 
         document.getElementById("form").className = ""
         document.getElementById('spinner').className = "d-none"
@@ -52,7 +52,7 @@ function listarCamioneros() {
                         <td class="direccion">${camioneros.direccion}</td>
                         <td class="telefono">${camioneros.telefono}</td>
                         <td class="salario">${camioneros.salario}</td>
-                        <td class="residencia">${camioneros.residencia}</td>
+                        <td class="poblacion">${camioneros.poblacion}</td>
                         <td>
                             <a type="button" href="/camioneros/update/${camioneros.dni}" class="btn btn-outline-light btn-sm"><i class="bi bi-pencil-square text-dark"></i></a>
                             <button type="button" class="btn btn-outline-light btn-sm" onclick="eliminarCamionero('${camioneros.dni}')"><i class="bi bi-trash3-fill text-danger"></i></button>
@@ -76,7 +76,7 @@ function crearCamionero() {
     const direccion = document.getElementById("direccion")
     const telefono = document.getElementById("telefono")
     const salario = document.getElementById("salario")
-    const residencia = document.getElementById("residencia")
+    const poblacion = document.getElementById("poblacion")
 
     const data = {
         'dni': dni.value,
@@ -84,7 +84,7 @@ function crearCamionero() {
         'direccion': direccion.value,
         'telefono': telefono.value,
         'salario': salario.value,
-        'residencia': residencia.value
+        'poblacion': poblacion.value
     }
 
     fetch(url, {
@@ -95,7 +95,7 @@ function crearCamionero() {
         location.href = "/camioneros"
     }).catch(error => {
         console.log(error);
-        document.getElementById("error").innerText = "Ocurrió un error " + error
+        document.getElementById("error").innerText = "Ocurrió un error jkdkj" + error
     })
 }
 
@@ -111,7 +111,7 @@ function editarCamionero() {
     const direccion = document.getElementById("direccion")
     const telefono = document.getElementById("telefono")
     const salario = document.getElementById("salario")
-    const residencia = document.getElementById("residencia")
+    const poblacion = document.getElementById("poblacion")
 
     const data = {
         'dni': dni.value,
@@ -119,7 +119,7 @@ function editarCamionero() {
         'direccion': direccion.value,
         'telefono': telefono.value,
         'salario': salario.value,
-        'residencia': residencia.value
+        'poblacion': poblacion.value
     }
 
     console.log(data)

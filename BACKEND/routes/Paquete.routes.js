@@ -17,10 +17,7 @@ router.get("/:codigoPaquete", (req, res) => {
 router.get("/",(req, res)=>{
     Paquete.findAll({
         attributes:['codigoPaquete','descripcion','destinatario','direccionDestinatario',],
-        include:{
-            model:Provincia,
-            attributes:['codigoProvincia','nombre'],
-        }
+      
     }).then(list=>{
         res.json(list)
     })

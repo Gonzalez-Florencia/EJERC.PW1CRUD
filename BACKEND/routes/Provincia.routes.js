@@ -16,12 +16,7 @@ router.get("/:codigoProvincia", (req, res) => {
 router.get("/",(req, res)=>{
     Provincia.findAll({
         attributes:['codigoProvincia','nombre'],
-        include:{
-            model:Camion,
-            attributes:['matricula'],
-            model: Camionero,
-            attributes: ['dni'],
-        }
+      
     }).then(list=>{
         res.json(list)
     })

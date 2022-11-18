@@ -10,9 +10,9 @@ Camion.init({
         unique: true,
         primaryKey: true
     },
-    tipo: DataTypes.STRING,
     modelo: DataTypes.STRING,
-    potencia: DataTypes.DATE
+    tipo: DataTypes.STRING,
+    potencia: DataTypes.STRING,
 }, {
     sequelize,
     modelName: 'camion',

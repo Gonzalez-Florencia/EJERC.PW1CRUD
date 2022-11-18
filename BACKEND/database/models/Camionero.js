@@ -11,10 +11,10 @@ Camionero.init({
         primaryKey: true
     },
     nombre: DataTypes.STRING,
-    poblacion: DataTypes.STRING,
     direccion: DataTypes.STRING,
-    salario: DataTypes.DATE,
-    telefono: DataTypes.DATE
+    telefono: DataTypes.STRING,
+    salario: DataTypes.FLOAT,
+    poblacion: DataTypes.STRING
 }, {
     sequelize,
     modelName: 'camionero',

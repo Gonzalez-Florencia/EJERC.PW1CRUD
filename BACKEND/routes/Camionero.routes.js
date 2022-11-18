@@ -1,6 +1,5 @@
-const router = require('express').Router()
+const router = require('express').Router();
 const {Camion,Camionero,Paquete}=require('../database/models')
-const Camionxcamionero = require('../database/models/CamionXcamionero')
 
 
 router.get("/:dni", (req, res) => {
@@ -11,15 +10,8 @@ router.get("/:dni", (req, res) => {
 
 router.get("/",(req, res)=>{
     Camionero.findAll({
-        attributes:['dni','nombre','telefono','direccion','salario','poblacion'],
-        include:{
-            model:Camion,
-            attributes: ['matricula'],
-            model: Camionxcamionero,
-            attributes: ['matricula'],
-            model: Paquete,
-            attributes: ['camioneroDNI'],
-        }
+       
+      
     }).then(list=>{
         res.json(list)
     })

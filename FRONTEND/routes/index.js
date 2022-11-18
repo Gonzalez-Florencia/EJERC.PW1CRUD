@@ -3,7 +3,6 @@ const path = require('path');
 
 const camionerosRouter = require('./camioneros.routes')
 const camionesRouter = require('./camiones.routes')
-const camionxcamionerosRouter = require('./camionxcamioneros.routes')
 const paquetesRouter = require ('./paquetes.routes')
 const provinciasRouter = require ('./provincias.routes')
 
@@ -13,7 +12,7 @@ router.get('/', (req, res) => {
 
 router.use('/camioneros',camionerosRouter)
 router.use('/camiones',camionesRouter)
-router.use('/camionxcamioneros',camionxcamionerosRouter)
+
 router.use('/paquetes',paquetesRouter)
 router.use('/provincias',provinciasRouter)
 
